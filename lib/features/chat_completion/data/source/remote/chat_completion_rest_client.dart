@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../../core/core.dart';
 import '../../data.dart';
@@ -22,9 +23,11 @@ class ChatCompletionRestClient implements IChatCompletionRestClient {
       );
 
       return ChatCompletionResponse.fromJson(response.data!);
-    } on DioError {
+    } on DioError catch (exception) {
+      debugPrint('DioError: ${exception.response?.data['error']['message']}');
       throw const BaseException.serverError();
     } catch (exception) {
+      debugPrint('Exception: $exception');
       rethrow;
     }
   }
