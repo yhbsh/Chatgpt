@@ -77,7 +77,7 @@ class ChatView extends HookConsumerWidget {
             chatMessageController: chatMessageController,
             onRequestChatComplete: completeChat,
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 32),
         ],
       ),
     );
