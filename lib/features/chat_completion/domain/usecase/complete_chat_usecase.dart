@@ -11,7 +11,16 @@ class CompleteChatUseCase extends IFutureUseCase<CompleteChatUseCaseParams, Chat
 
   @override
   Future<Either<BaseFailure, ChatCompletionMessageEntity>> call({required CompleteChatUseCaseParams params}) {
-    final request = ChatCompletionRequest(model: 'gpt-3.5-turbo', messages: params.messages);
+    final request = ChatCompletionRequest(
+      model: 'gpt-3.5-turbo-0301',
+      messages: params.messages,
+      temperature: 0.2,
+      topP: 1,
+      n: 1,
+      presencePenalty: 1,
+      frequencyPenalty: 0,
+      logitBias: {},
+    );
     return repository.completeChat(request: request);
   }
 }
