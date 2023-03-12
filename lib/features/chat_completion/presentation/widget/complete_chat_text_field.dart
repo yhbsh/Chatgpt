@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CompleteChatTextField extends StatelessWidget {
-  const CompleteChatTextField({super.key, required this.chatMessageController, required this.onRequestChatComplete});
+  const CompleteChatTextField({super.key, required this.controller, required this.onFieldSubmitted});
 
-  final TextEditingController chatMessageController;
-  final VoidCallback onRequestChatComplete;
+  final TextEditingController controller;
+  final VoidCallback onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: TextFormField(
-        controller: chatMessageController,
+        controller: controller,
         decoration: InputDecoration(
           hintText: 'Enter your message',
           suffixIcon: IconButton(
@@ -21,10 +21,10 @@ class CompleteChatTextField extends StatelessWidget {
             ),
             splashRadius: 20,
             icon: const Icon(Icons.send),
-            onPressed: onRequestChatComplete,
+            onPressed: onFieldSubmitted,
           ),
         ),
-        onFieldSubmitted: (_) => onRequestChatComplete(),
+        onFieldSubmitted: (_) => onFieldSubmitted(),
       ),
     );
   }

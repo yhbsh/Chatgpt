@@ -59,10 +59,7 @@ class ChatView extends HookConsumerWidget {
         children: [
           const SizedBox(height: 16),
           ChatMessagesListView(messages: messagesValueNotifier.value),
-          CompleteChatTextField(
-            chatMessageController: chatMessageController,
-            onRequestChatComplete: completeChat,
-          ),
+          CompleteChatTextField(controller: chatMessageController, onFieldSubmitted: completeChat),
           const SizedBox(height: 32),
         ],
       ),
