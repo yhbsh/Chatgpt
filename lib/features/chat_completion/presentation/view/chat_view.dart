@@ -56,7 +56,17 @@ class ChatView extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: SvgPicture.asset(AppAssets.chatGPTLogoSvgPath),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SvgPicture.asset(AppAssets.chatGPTLogoSvgPath, fit: BoxFit.cover),
+        ),
+        title: const Text('ChatGPT'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.brightness_6),
+            onPressed: () => ref.read(themeModeNotifierProvider.notifier).toggleThemeMode(),
+          ),
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
