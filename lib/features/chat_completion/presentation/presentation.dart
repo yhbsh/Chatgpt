@@ -6,6 +6,7 @@ export 'provider/state/chat_completion_state.dart';
 export 'resource/chat_completion_message_role.dart';
 export 'view/chat_view.dart';
 export 'widget/chat_messages_list_view.dart';
+export 'widget/chat_view_app_bar.dart';
 export 'widget/complete_chat_text_field.dart';
 export 'widget/recieved_message_card.dart';
 export 'widget/sent_message_card.dart';

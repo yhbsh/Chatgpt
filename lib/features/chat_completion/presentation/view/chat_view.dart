@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../core/core.dart';
 import '../presentation.dart';
 
 class ChatView extends HookConsumerWidget {
@@ -55,19 +53,7 @@ class ChatView extends HookConsumerWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SvgPicture.asset(AppAssets.chatGPTLogoSvgPath, fit: BoxFit.cover),
-        ),
-        title: const Text('ChatGPT'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.brightness_6),
-            onPressed: () => ref.read(themeModeNotifierProvider.notifier).toggleThemeMode(),
-          ),
-        ],
-      ),
+      appBar: ChatViewAppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
