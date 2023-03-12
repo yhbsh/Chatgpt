@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../domain/domain.dart';
@@ -23,10 +24,12 @@ class ChatCompletionNotifier extends Notifier<ChatCompletionState> implements IC
 
     result.fold(
       (failure) {
+        debugPrint('complete chat failure');
         state = ChatCompletionState.failure(failure: failure);
         state = const ChatCompletionState.notRequested();
       },
       (message) {
+        debugPrint('complete chat success');
         state = ChatCompletionState.success(message: message);
       },
     );
