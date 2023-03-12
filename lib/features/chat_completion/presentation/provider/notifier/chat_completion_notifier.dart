@@ -6,7 +6,7 @@ import '../../presentation.dart';
 final chatCompletionNotifierProvider = NotifierProvider<ChatCompletionNotifier, ChatCompletionState>(ChatCompletionNotifier.new);
 
 abstract class IChatCompletionNotifier {
-  Future<void> completeChat({required List<ChatCompletionMessageEntity> messages});
+  Future<void> completeChat({required List<ChatCompletionMessageObject> inputs});
 }
 
 class ChatCompletionNotifier extends Notifier<ChatCompletionState> implements IChatCompletionNotifier {
@@ -16,7 +16,8 @@ class ChatCompletionNotifier extends Notifier<ChatCompletionState> implements IC
   ChatCompletionState build() => const ChatCompletionState.notRequested();
 
   @override
-  Future<void> completeChat({required List<ChatCompletionMessageEntity> messages}) async {
+  Future<void> completeChat({required List<ChatCompletionMessageObject> inputs}) async {
+    final messages = inputs.map((object) => object.toEntity()).toList();
     final params = CompleteChatUseCaseParams(messages: messages);
     final result = await _completeChatUseCase(params: params);
 
