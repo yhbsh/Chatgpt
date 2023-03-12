@@ -18,6 +18,8 @@ class ChatCompletionNotifier extends Notifier<ChatCompletionState> implements IC
 
   @override
   Future<void> completeChat({required List<ChatCompletionMessageInput> inputs}) async {
+    state = const ChatCompletionState.requested();
+
     final messages = inputs.map((object) => object.toEntity()).toList();
     final params = CompleteChatUseCaseParams(messages: messages);
     final result = await _completeChatUseCase(params: params);
