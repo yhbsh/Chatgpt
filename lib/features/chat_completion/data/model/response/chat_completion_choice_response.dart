@@ -11,7 +11,7 @@ part 'chat_completion_choice_response.g.dart';
 class ChatCompletionChoiceResponse with _$ChatCompletionChoiceResponse {
   const factory ChatCompletionChoiceResponse({
     @JsonKey(name: 'message') required ChatCompletionMessageEntity message,
-    @JsonKey(name: 'finish_reason') required String finishReason,
+    @JsonKey(name: 'finish_reason') String? finishReason,
     @JsonKey(name: 'index') required int index,
   }) = _ChatCompletionChoiceResponse;
 
