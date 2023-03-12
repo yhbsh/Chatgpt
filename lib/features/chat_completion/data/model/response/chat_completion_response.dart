@@ -13,6 +13,7 @@ class ChatCompletionResponse with _$ChatCompletionResponse {
     @JsonKey(name: 'id') required String id,
     @JsonKey(name: 'object') required String object,
     @JsonKey(name: 'created') required int created,
+    @JsonKey(name: 'model') String? model,
     @JsonKey(name: 'usage') required ChatCompletionUsageResponse usage,
     @JsonKey(name: 'choices') required List<ChatCompletionChoiceResponse> choices,
   }) = _ChatCompletionResponse;
