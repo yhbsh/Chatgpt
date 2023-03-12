@@ -9,6 +9,6 @@
 
 - `git clone https://github.com/HoussemBousmaha/chatgpt.git`
 - `cd chatgpt`
-- `flutter create --platforms <prefered platforms (ex: macos, ios, android)> .`
+- `flutter create --platforms <your-prefered-platforms (ex: macos, ios, android)> .`
 - `flutter pub run build_runner build --delete-conflicting-outputs`
-- `flutter run --release`
+- `flutter run --release --dart-define=OPENAI_API_KEY=<your-openai-api-key>`
