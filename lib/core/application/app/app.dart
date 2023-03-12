@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../features/chat/chat.dart';
+import '../../core.dart';
 
-class ChatGPTApp extends StatelessWidget {
+class ChatGPTApp extends ConsumerWidget {
   const ChatGPTApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(home: ChatView());
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp.router(routerConfig: ref.watch(routerProvider));
   }
 }
