@@ -23,7 +23,7 @@ class ChatCompletionRepository implements IChatCompletionRepository {
       } on BaseException catch (exception) {
         return left(BaseFailure(message: exception.message));
       } catch (exception) {
-        return left(BaseFailure(message: exception.toString()));
+        return left(const BaseFailure.unexpected());
       }
     } else {
       return left(const BaseFailure.noInternetConnection());
