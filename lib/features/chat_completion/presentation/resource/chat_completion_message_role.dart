@@ -1,0 +1,1 @@
+enum ChatCompletionMessageRole { assistant, user }
