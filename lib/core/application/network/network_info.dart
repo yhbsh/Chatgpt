@@ -1,10 +1,10 @@
 import 'dart:io';
 
-abstract class INetowrkInfo {
+abstract class INetworkInfo {
   Future<bool> get isConnected;
 }
 
-class NetworkInfo implements INetowrkInfo {
+class NetworkInfo implements INetworkInfo {
   @override
   Future<bool> get isConnected async {
     try {
