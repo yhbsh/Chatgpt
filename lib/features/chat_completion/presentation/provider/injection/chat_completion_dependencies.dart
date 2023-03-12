@@ -5,8 +5,8 @@ import '../../../data/data.dart';
 import '../../../domain/domain.dart';
 
 final chatCompletionRestClientProvider = Provider<IChatCompletionRestClient>(
-  (ref) => IChatCompletionRestClient(
-    ref.read(dioProvider),
+  (ref) => ChatCompletionRestClient(
+    dio: ref.read(dioProvider),
   ),
 );
 final chatCompletionRemoteDataSourceProvider = Provider<IChatCompletionRemoteDataSource>(
