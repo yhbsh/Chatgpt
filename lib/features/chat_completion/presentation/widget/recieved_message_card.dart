@@ -44,7 +44,7 @@ class RecievedMessageCard extends HookWidget {
         margin: EdgeInsets.only(right: 16, left: size.width * 0.3),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: ShapeDecoration(
-          color: colorScheme.secondary,
+          color: colorScheme.secondary.withOpacity(0.8),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(16),
@@ -55,7 +55,10 @@ class RecievedMessageCard extends HookWidget {
         ),
         child: Text(
           messageValueNotifier.value,
-          style: textTheme.bodyLarge!.copyWith(color: colorScheme.onPrimary, fontSize: size.width * 0.035 < 16 ? 16 : size.width * 0.035),
+          style: textTheme.bodyLarge!.copyWith(
+            color: colorScheme.onSecondary,
+            fontSize: size.width * 0.035 < 16 ? 16 : size.width * 0.035,
+          ),
         ),
       ),
     );

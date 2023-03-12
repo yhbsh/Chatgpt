@@ -17,7 +17,7 @@ class SentMessageCard extends StatelessWidget {
         margin: EdgeInsets.only(left: 16, right: size.width * 0.3),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: ShapeDecoration(
-          color: colorScheme.primary,
+          color: colorScheme.primary.withOpacity(0.8),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(16),
@@ -28,7 +28,10 @@ class SentMessageCard extends StatelessWidget {
         ),
         child: Text(
           message,
-          style: textTheme.bodyLarge!.copyWith(color: colorScheme.onPrimary, fontSize: size.width * 0.035 < 16 ? 16 : size.width * 0.035),
+          style: textTheme.bodyLarge!.copyWith(
+            color: colorScheme.onSecondary,
+            fontSize: size.width * 0.035 < 16 ? 16 : size.width * 0.035,
+          ),
         ),
       ),
     );
