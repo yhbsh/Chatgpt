@@ -2,7 +2,11 @@ class BaseException {
   final String message;
   final String? code;
 
-  const BaseException(this.message, {this.code});
+  const BaseException({required this.message, this.code});
+
+  const BaseException.serverError()
+      : message = 'Server error',
+        code = 'SERVER_ERROR';
 
   @override
   String toString() {
