@@ -8,6 +8,13 @@ class ChatGPTApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp.router(routerConfig: ref.watch(routerProvider));
+    final themeMode = ref.watch(themeModeNotifierProvider);
+    return MaterialApp.router(
+      routerConfig: ref.watch(routerProvider),
+      title: 'ChatGPT',
+      themeMode: themeMode,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+    );
   }
 }
