@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -11,7 +12,7 @@ class ChatMessagesListView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // get last message from chat history
-    final chatHistory = ref.watch(chatHistoryNotifierProvider);
+    final chatHistory = ref.watch(conversationHistoryNotifierProvider);
 
     return Expanded(
       child: SingleChildScrollView(
