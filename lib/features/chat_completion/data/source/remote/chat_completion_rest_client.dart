@@ -6,7 +6,7 @@ import '../../data.dart';
 
 part 'chat_completion_rest_client.g.dart';
 
-@RestApi(baseUrl: 'https://api.openai.com/v1/chat')
+@RestApi(baseUrl: AppConst.openAIApiChatCompletionBaseUrl)
 abstract class IChatCompletionRestClient {
   factory IChatCompletionRestClient(Dio dio, {String baseUrl}) = _IChatCompletionRestClient;
 
