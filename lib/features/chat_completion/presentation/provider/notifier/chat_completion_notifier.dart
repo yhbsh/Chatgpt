@@ -7,20 +7,31 @@ import '../../presentation.dart';
 final chatCompletionNotifierProvider = NotifierProvider<ChatCompletionNotifier, ChatCompletionState>(ChatCompletionNotifier.new);
 
 abstract class IChatCompletionNotifier {
-  Future<void> completeChat({required List<ChatCompletionMessageInput> inputs});
+  Future<void> completeChat({required ChatCompletionMessageInput input});
 }
 
 class ChatCompletionNotifier extends Notifier<ChatCompletionState> implements IChatCompletionNotifier {
   CompleteChatUseCase get _completeChatUseCase => ref.read(completeChatUseCaseProvider);
 
   @override
-  ChatCompletionState build() => const ChatCompletionState.notRequested();
+  ChatCompletionState build() {
+    return const ChatCompletionState.notRequested();
+  }
 
   @override
-  Future<void> completeChat({required List<ChatCompletionMessageInput> inputs}) async {
+  Future<void> completeChat({required ChatCompletionMessageInput input}) async {
     state = const ChatCompletionState.requested();
 
+    // get conversation history
+    final conversationHistory = ref.read(conversationHistoryNotifierProvider);
+
+    // add input to complete chat inputs
+    final inputs = [...conversationHistory, input];
+
+    // convert inputs to messages
     final messages = inputs.map((object) => object.toEntity()).toList();
+
+    // complete chat
     final params = CompleteChatUseCaseParams(messages: messages);
     final result = await _completeChatUseCase(params: params);
 
@@ -32,6 +43,11 @@ class ChatCompletionNotifier extends Notifier<ChatCompletionState> implements IC
       },
       (message) {
         debugPrint('complete chat success');
+
+        // save message to conversation history
+        final input = ChatCompletionMessageInput.fromEntity(message);
+        ref.read(conversationHistoryNotifierProvider.notifier).saveMessage(message: input);
+
         state = ChatCompletionState.success(message: message);
       },
     );
