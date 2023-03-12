@@ -8,7 +8,7 @@ part 'chat_completion_usage_response.g.dart';
 @freezed
 class ChatCompletionUsageResponse with _$ChatCompletionUsageResponse {
   const factory ChatCompletionUsageResponse({
-    @JsonKey(name: 'prompt_toknes') required int promptTokens,
+    @JsonKey(name: 'prompt_tokens') required int promptTokens,
     @JsonKey(name: 'completion_tokens') required int completionTokens,
     @JsonKey(name: 'total_tokens') required int totalTokens,
   }) = _ChatCompletionUsageResponse;
