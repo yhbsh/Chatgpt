@@ -31,11 +31,11 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-
 macos/
 android/
 ios/
 windows/
+
 
 # Symbolication related
 app.*.symbols
@@ -47,3 +47,14 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+lib/features/chat_completion/data/model/request/chat_completion_request.freezed.dart
+lib/features/chat_completion/data/model/request/chat_completion_request.g.dart
+lib/features/chat_completion/data/model/response/chat_completion_choice_response.freezed.dart
+lib/features/chat_completion/data/model/response/chat_completion_choice_response.g.dart
+lib/features/chat_completion/data/model/response/chat_completion_response.freezed.dart
+lib/features/chat_completion/data/model/response/chat_completion_response.g.dart
+lib/features/chat_completion/data/model/response/chat_completion_usage_response.freezed.dart
+lib/features/chat_completion/data/model/response/chat_completion_usage_response.g.dart
+lib/features/chat_completion/domain/entity/chat_completion_message_entity.freezed.dart
+lib/features/chat_completion/domain/entity/chat_completion_message_entity.g.dart
+lib/features/chat_completion/presentation/provider/state/chat_completion_state.freezed.dart
