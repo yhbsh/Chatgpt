@@ -12,22 +12,7 @@ class ChatView extends HookConsumerWidget {
     print('ChatView build');
 
     final chatMessageController = useTextEditingController();
-
     final messagesValueNotifier = useState<List<String>>([]);
-
-    // listen to chatCompletionNotifierProvider
-    ref.listen(
-      chatCompletionNotifierProvider,
-      (previous, next) {
-        next.whenOrNull(
-          success: (message) {
-            // save message to chatHistoryNotifierProvider
-            final input = ChatCompletionMessageInput.fromEntity(message);
-            ref.read(chatHistoryNotifierProvider.notifier).saveMessage(message: input);
-          },
-        );
-      },
-    );
 
     void completeChat() {
       if (chatMessageController.text.isEmpty) return;
@@ -35,19 +20,9 @@ class ChatView extends HookConsumerWidget {
       // add message to messagesValueNotifier
       messagesValueNotifier.value = [...messagesValueNotifier.value, chatMessageController.text];
 
-      // get chat history from chatHistoryNotifierProvider
-      final chatHistory = ref.read(chatHistoryNotifierProvider);
-
       // complete chat
-      ref.read(chatCompletionNotifierProvider.notifier).completeChat(
-        inputs: [
-          ...chatHistory,
-          ChatCompletionMessageInput(
-            role: ChatCompletionMessageRole.user,
-            content: chatMessageController.text,
-          ),
-        ],
-      );
+      final input = ChatCompletionMessageInput(role: ChatCompletionMessageRole.user, content: chatMessageController.text);
+      ref.read(chatCompletionNotifierProvider.notifier).completeChat(input: input);
 
       chatMessageController.clear();
     }
