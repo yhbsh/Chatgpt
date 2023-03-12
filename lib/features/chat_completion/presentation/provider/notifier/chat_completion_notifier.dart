@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../domain/domain.dart';
 import '../../presentation.dart';
 
-final chatComplectionProvider = NotifierProvider<ChatCompletionNotifier, ChatCompletionState>(ChatCompletionNotifier.new);
+final chatComplectionNotifierProvider = NotifierProvider<ChatCompletionNotifier, ChatCompletionState>(ChatCompletionNotifier.new);
 
 abstract class IChatCompletionNotifier {
   Future<void> completeChat({required List<ChatCompletionMessageEntity> messages});
