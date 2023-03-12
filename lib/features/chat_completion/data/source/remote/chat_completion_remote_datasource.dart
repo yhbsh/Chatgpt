@@ -1,3 +1,6 @@
+import 'package:dio/dio.dart';
+
+import '../../../../../core/core.dart';
 import '../../data.dart';
 
 abstract class IChatCompletionRemoteDataSource {
@@ -11,7 +14,13 @@ class ChatCompletionRemoteDataSource implements IChatCompletionRemoteDataSource 
 
   @override
   Future<ChatCompletionResponse> completeChat({required ChatCompletionRequest request}) async {
-    final response = await _client.completeChat(request: request);
-    return response;
+    try {
+      final response = await _client.completeChat(request: request);
+      return response;
+    } on DioError {
+      throw const BaseException.serverError();
+    } catch (exception) {
+      rethrow;
+    }
   }
 }
