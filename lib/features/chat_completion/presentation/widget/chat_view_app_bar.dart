@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../core/core.dart';
 
-class ChatViewAppBar extends ConsumerWidget with PreferredSizeWidget {
+class ChatViewAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const ChatViewAppBar({super.key});
 
   @override
